@@ -1,0 +1,100 @@
+<div class="container">
+  <div class="box">
+    <div class="title-card">
+      Pesquisar Sistema
+    </div>
+    <div>
+      <div class="box-input">
+          <div class="field-input">
+            <span>Descrição</span>
+              <mat-form-field class="md-input">
+                <input 
+                  matInput
+                  placeholder="Informe a descrição"
+                  name="descricao"
+                  [formControl] = "descricao"
+                  >
+              </mat-form-field>
+          </div>
+
+          <div class="field-input">
+            <span>Sigla</span>
+              <mat-form-field class="md-input">
+                <input 
+                  matInput
+                  placeholder="Informe a Sigla"
+                  name="sigla"
+                  [formControl] = "sigla"
+                  >
+              </mat-form-field>
+          </div>
+
+          <div class="field-input">
+            <span>E-mail de atendimento do sistema</span>
+              <mat-form-field class="md-input">
+                <input 
+                  matInput 
+                  placeholder="Informe o e-mail"
+                  name="email"
+                  [formControl] = "email"
+                  >
+              </mat-form-field>
+          </div>
+
+      </div>
+
+      <div class="box-button">
+        <div class="fields-button">
+          <button mat-button (click)="getSistema()">
+            Pesquisar
+            <i class="fa fa-search"></i>
+          </button>
+
+          <button mat-button (click)="clearForm()">
+            Limpar
+            <i class="fa fa-eraser"></i>
+          </button>
+
+          <button mat-button routerLink='/sistema'>
+            Novo Sistema
+            <i class="fa fa-plus-square"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box-list">
+      <div class="title-card">
+        Resultado da Consulta
+      </div>
+      <div>
+
+        <mat-table [dataSource]="dataSource">
+
+          <ng-container matColumnDef='descricao'>
+            <mat-header-cell *matHeaderCellDef>Descrição</mat-header-cell>
+            <mat-cell *matCellDef="let sistema">{{sistema.descricao}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef='sigla'>
+            <mat-header-cell *matHeaderCellDef>Sigla</mat-header-cell>
+            <mat-cell *matCellDef="let sistema">{{sistema.sigla}}</mat-cell>
+          </ng-container>
+          
+          <ng-container matColumnDef='email'>
+            <mat-header-cell *matHeaderCellDef>E-mail</mat-header-cell>
+            <mat-cell *matCellDef="let sistema">{{sistema.email}}</mat-cell>
+          </ng-container>
+          
+          <ng-container matColumnDef='url'>
+            <mat-header-cell *matHeaderCellDef>URL</mat-header-cell>
+            <mat-cell *matCellDef="let sistema">{{sistema.url}}</mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef='displayedColumns'></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+        </mat-table>      
+      </div>
+    </div>
+</div>
