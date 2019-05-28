@@ -18,6 +18,8 @@ public class Rebelde {
 
     private boolean traidor = false;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "localizacao_id", referencedColumnName = "id", nullable = false)
     private Localizacao localizacao;
 
     /**

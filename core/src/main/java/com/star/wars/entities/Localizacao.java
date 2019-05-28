@@ -1,9 +1,7 @@
 package com.squadra.blade.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "localizacao")
@@ -18,6 +16,9 @@ public class Localizacao {
     public double latitude;
 
     public double longitude;
+
+    @OneToMany(mappedBy = "empresa", fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, orphanRemoval = true)
+    private Set<Rebelde> rebeldes;
 
     /**
      * @return current id

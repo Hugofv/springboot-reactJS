@@ -13,12 +13,14 @@ public class RebeldeService {
     @Autowired
     private RebeldeRepository _rebeldeRepository;
 
+    /**
+     * Salva a instânica de {@link Rebelde} na base de dados.
+     *
+     * @param rebelde
+     * @return
+     */
+    public Rebelde salvar(Rebelde rebelde) {
 
-    public List<Rebelde> listarPorFiltro(String descricao, String sigla, String email) {
-        return _rebeldeRepository.listarFiltro(descricao, sigla, email);
-    }
-
-    public Rebelde criar(Rebelde rebelde) {
         return  _rebeldeRepository.save(rebelde);
     }
 }
