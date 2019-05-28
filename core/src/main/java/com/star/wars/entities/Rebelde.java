@@ -1,13 +1,18 @@
-package com.squadra.blade.entities;
+package com.star.wars.entities;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "rebelde")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Rebelde {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private String nome;
@@ -18,7 +23,7 @@ public class Rebelde {
 
     private boolean traidor = false;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "localizacao_id", referencedColumnName = "id", nullable = false)
     private Localizacao localizacao;
 

@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.squadra</groupId>
-    <artifactId>blade</artifactId>
+    <artifactId>starwars</artifactId>
     <version>2.0.5</version>
     <packaging>jar</packaging>
 
-    <name>blade</name>
-    <description>blade</description>
+    <name>starwars</name>
+    <description>starwars</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -59,6 +59,12 @@
             <artifactId>spring-restdocs-mockmvc</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>

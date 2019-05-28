@@ -1,4 +1,4 @@
-package com.star.wars.security;
+package com.star.wars.rest.security;
 
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;

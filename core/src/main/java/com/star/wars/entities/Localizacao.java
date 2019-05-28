@@ -1,14 +1,20 @@
-package com.squadra.blade.entities;
+package com.star.wars.entities;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @Table(name = "localizacao")
+@JsonIdentityInfo(generator= ObjectIdGenerators.IntSequenceGenerator.class, property="id")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Localizacao {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private String nome;
@@ -17,7 +23,7 @@ public class Localizacao {
 
     public double longitude;
 
-    @OneToMany(mappedBy = "empresa", fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, orphanRemoval = true)
+    @OneToMany(mappedBy = "localizacao", cascade = CascadeType.ALL)
     private Set<Rebelde> rebeldes;
 
     /**
@@ -74,5 +80,19 @@ public class Localizacao {
      */
     public void setLongitude(double longitude) {
         this.longitude = longitude;
+    }
+
+    /**
+     * @return current rebeldes
+     */
+    public Set<Rebelde> getRebeldes() {
+        return rebeldes;
+    }
+
+    /**
+     * @param rebeldes to set
+     */
+    public void setRebeldes(Set<Rebelde> rebeldes) {
+        this.rebeldes = rebeldes;
     }
 }
